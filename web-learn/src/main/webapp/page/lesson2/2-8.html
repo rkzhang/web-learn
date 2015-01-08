@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:12px; text-align:center}
+	div{float:left; border:solid 1px #ccc; margin:8px; width:65px; height:65px; display:none}
+	span{float:left; border:solid 1px #ccc; margin:8px; width:45px; 
+	height:45px; background-color:#eee}
+</style>
+<title>Insert title here</title>
+	<script type="text/javascript">
+		$(function(){
+			//显示包含给定文本的元素
+			$("div:contains('A')").css("display", "block");
+		})	
+		$(function(){
+			//显示所有不包含子元素或者文本的空元素
+			$("div:empty").css("display", "block");
+		})
+		$(function(){
+			//显示含有选择器所匹配的元素
+			$("div:has(span)").css("display", "block");
+		})
+		$(function(){
+			//显示含有子元素或者文本的元素
+			$("div:parent").css("display", "block")
+		})
+	</script>
+</head>
+<body>
+	<div>ABCD</div>
+	<div><span></span></div>
+	<div>EFaH</div>
+	<div></div>
+</body>
+</html>
