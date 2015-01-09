@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
-<style type=""text/css">
+<style type="text/css">
 	body{font-size:12px;text-align:center}
 	div{display:none}
 	select{height:65px}
@@ -16,10 +16,20 @@
 		$("#form1 input:enabled").addClass("GetFocus");
 	})
 	
-	$(function() {
+	$(function() { //增加表单中所有属性为不可用的元素类别
 		$("#divA").show(3000);
-		$("form1 input:disabled").addClass("GetFocus")
+		$("#form1 input:disabled").addClass("GetFocus");
 	})
+	
+	$(function() {	//增加表单中所有被选中的元素类别
+		$("#divB").show(3000);
+		$("#form1 input:checked").addClass("GetFocus");
+	})
+	$(function() {
+		$("divC").show(3000);
+		$("#Span2").html("选中项是" + $("select option:selected").text());
+	})
+	
 </script>
 </head>
 <body>
