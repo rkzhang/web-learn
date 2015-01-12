@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:15px;text-align:center}
+	div{border:solid 1px #666;padding:5px;width:220px;margin:5px}
+</style>
+<script type="text/javascript">
+	$(function(){
+		var strHTML = $("#divShow").html(); //获取HTML内容
+		var strText = $("#divShow").text(); //获取文本内容
+		$("#divHTML").html(strHTML);	//设置HTML内容
+		$("divText").text(strText);		//设置文本内容
+	})
+</script>
+</head>
+<body>
+	<div id="divShow" ><b><i>Write Less Do More</i></b></div>
+	<div id="divHTML"></div>
+	<div id="divText"></div>
+</body>
+</html>

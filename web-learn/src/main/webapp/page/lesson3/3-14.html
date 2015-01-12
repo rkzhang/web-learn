@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>替换元素节点</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script> 
+<style type="text/css">
+	body{font-size:13px}
+	span{font-weight:bold}
+	p{background-color:#eee;padding:5px;width:200px}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$("#Span1").replaceWith("<span title='replaceWith' >aaa</span>");
+	})
+	
+	$("<span title='replaceAll' >tao_guo_rong@163.com</span>").replaceAll("#Span2");
+</script>
+</head>
+<body>
+	<p>姓名 : <span id="Span1"></span></p>
+	<p>邮箱 : <span id="Span2"></span></p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:12px}
+	div{float:left;padding-left:10px}
+	img{border:solid 1px #ccc;padding:3px;float:left}
+</style>
+<script type="text/javascript">
+	$(function() {
+		var strAlt = $("img").attr("src"); //属性值一
+		strAlt += "<br/><br/>";
+		strAlt += $("img").attr("title"); //属性值二
+		$("#divAlt").html(strAlt); //显示在页面中
+	})
+</script>
+</head>
+<body>
+	<img alt="" title="林书豪" src="../../images/image01.jpg" />
+	<div id="divAlt" ></div>
+</body>
+</html>

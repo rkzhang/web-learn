@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:15px}
+	p{padding:5px;width:220px}
+	.cls1{font-weight:bold;font-style:italic}
+	.cls2{border:solid 1px #666;background-color:#eee}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$("p:first").click(function() {
+			$(this).css("font-weight", "bold"); //字体加粗
+			$(this).css("font-style", "italic");	//斜体
+			$(this).css("background-color", "#eee");	//增加背景色
+		})
+		
+		$("p:last").click(function() {
+			$(this).addClass("cls1 cls2"); //同时新增两个样式类别
+		})
+	})
+</script>
+</head>
+<body>
+	<p>First Write Less Do More</p>
+	<p>Second Write Less Do More</p>
+</body>
+</html>

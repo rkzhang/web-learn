@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:12px}
+	.clsSpn{float:left;padding-top:10px;padding-left:10px}
+	.clsImg{border:solid 1px #ccc;padding:3px;float:left}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$("img").attr("src", "../../images/image02.jpg"); //设置src属性
+		$("img").attr("title", "这是一幅风景画");  //设置title属性
+		$("img").attr({src : "../../images/image02.jpg", title : "这是一幅风景画"}); //同时设置两个属性
+		$("img").addClass("clsImg"); //增加样式
+		$("span").html("加载完毕");	//显示加载状态
+	})
+</script>
+</head>
+<body>
+																																																													<img alt="" src="../../images/image01.jpg" style="float:left">
+<span class="clsSpn">正在加载图片...</span>
+</body>
+</html>

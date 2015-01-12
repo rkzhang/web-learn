@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	.clsImg{border:solid 1px #666;padding:3px}
+</style>
+<script type="text/javascript">
+	$(function() {
+		$("img").click(function() {
+			$(this).toggleClass("clsImg"); //切换样式类别
+			alert($(this).attr("class"));
+		})
+	})
+</script>
+</head>
+<body>
+	<img alt="" title="jQuery" src="../../images/image01.jpg" />
+</body>
+</html>
