@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:13px}
+	.btn{border:#666 1px solid;padding:2px;width:80px;
+		filter: progid:DXImageTransform.Microsoft
+		.Gradient(GradientType=0,StartColorStr=#ffffff,
+		EndColorStr=#ECE9D8);}
+	div{line-height:1.8em}
+</style>
+<script type="text/javascript">
+	$(function() {
+		function oClick() { //自定义事件
+			$("#divTip").append("<div>按钮二的单击事件</div>");
+		}
+		$("input:eq(0)").bind("click", function() {
+			$("#divTip").append("<div>按钮一的单击事件</div>");
+		});
+		$("input:eq(1)").bind("click", oClick); //绑定自定义事件
+		$("input:eq(2)").bind("click", function() {
+			$("input").unbind();
+		});
+		$("#Button4").one("click", function() {
+			this.value="010-12345678";
+		}); //绑定自定义事件
+	})
+</script>
+</head>
+<body>
+	<div>
+		<input id="Button1" type="button" value="按钮一" class="btn"/>
+		<input id="Button2" type="button" value="按钮二" class="btn"/>
+		<input id="Button3" type="button" value="删除事件" class="btn"/>
+		<input id="Button4" type="button" value="点击查看联系方式" class="btn"/>
+	</div>
+	<div id="divTip" style="padding-top:10px"></div>
+</body>
+</html>

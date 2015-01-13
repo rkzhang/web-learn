@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>切换事件toggle</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:13px}
+	img{border:solid 1px #ccc;padding:3px}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$("img").toggle(
+			function() {
+				$("img").attr("src", "../../images/image01.jpg");
+				$("img").attr("title", this.src);
+			},		
+			function() {
+				$("img").attr("src", "../../images/image02.jpg");
+				$("img").attr("title", this.src);
+			}
+		)
+		
+	})
+</script>
+</head>
+<body>
+	<img src="../../images/image01.jpg"/>
+</body>
+</html>
