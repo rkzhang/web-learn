@@ -25,6 +25,18 @@
 </style>
 <script type="text/javascript">
 	$(function() {
+		/*
+		验证邮箱格式是否正确
+		参数strEmail,需要验证的 邮箱
+		*/
+		function chkEmail(strEmail) {
+			if(!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(strEmail)) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		
 		$("#txtEmail").trigger("focus"); 	//默认时文本框获取焦点
 		$("#txtEmail").focus(function() {	//文本框获取焦点事件
 			$(this).removeClass("txtBlur").addClass("txtInit");
@@ -32,7 +44,25 @@
 			$("#spnTip").removeClass("spnBlur").removeClass("spnSucc").html("请输入您常用的邮箱地址！");
 		})
 		
-		
+		$("#txtEmail").blur(function (){
+			var vtxt = $("#txtEmail").val();
+			if(vtxt.length == 0) {
+				$(this).removeClass("txtInit").addClass("txtBlur");
+				$("#email").removeClass("divFocu").addClass("divBlur");
+				$("#spnTip").addClass("spnBlur").html("邮箱地址不能为空！");
+			}else{
+				if(!chkEmail(vtxt)) { //检测邮箱格式是否正确
+					$(this).removeClass("txtInit").addClass("txtBlur");
+					$("#email").removeClass("divFocu").addClass("divBlur");
+					$("#spnTip").addClass("spnBlur").html("邮箱地址不能为空！");
+				} else {
+					//如果正确
+					$(this).removeClass("txtBlur").addClass("txtInit");
+					$("#email").removeClass("divFocu");
+					$("#spnTip").removeClass("spnBlur").addClass("spnSucc").html("");
+				}
+			}
+		})	
 	})
 </script>
 </head>
