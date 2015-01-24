@@ -11,6 +11,7 @@ public class ScheduledThreadPoolSample2 {
 
 		threadPool.scheduleAtFixedRate(new MyScheduledTask("Schedule At Fixed Rate Task"), 3, 10, TimeUnit.SECONDS);
 		threadPool.scheduleWithFixedDelay(new MyScheduledTask("Schedule With Fixed Rate Task"), 3, 10, TimeUnit.SECONDS);
+		
 	}
 
 }
