@@ -33,7 +33,7 @@ class MyScheduledTask implements Runnable {
     public void run() {  
         System.out.println(tname+"任务开始执行");  
         try {  
-            Thread.sleep(3000);  
+            Thread.sleep(1000);  
         } catch (InterruptedException e) {  
             e.printStackTrace();  
         }  
