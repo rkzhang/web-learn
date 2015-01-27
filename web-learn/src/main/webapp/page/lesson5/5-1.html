@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>show()与hide()方法</title>
+<script type="text/javascript" src="../../js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{font-size:13px}
+	.artFram{border:solid 1px #ccc;background-color:#eee;
+			width:260px;padding:8px;word-break:break-all}
+	.artList{line-height:1.8em}
+</style>
+<script type="text/javascript">
+	$(function() {
+		var $link = $(".artList a"); //获取单击文本
+		var $hide = $(".artList :eq(2)");	//获取隐藏的段落
+		
+	})
+</script>
+</head>
+<body>
+	<div class="artFram">
+		<div class="artList">
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span>一个优秀的程序开发员，除需掌握专业的开发语言，还要具有</span>
+			<span style="display:none">执着，沉稳，细致的专业素质</span>
+			&nbsp;<a href="javascript:void(0)" >显示</a>
+		</div>
+	</div>
+</body>
+</html>
