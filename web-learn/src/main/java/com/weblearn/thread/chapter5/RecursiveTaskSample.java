@@ -12,7 +12,9 @@ public class RecursiveTaskSample {
 		
 		DocumentTask task = new DocumentTask(document, 0, 100, "the");
 		
-		ForkJoinPool pool = new ForkJoinPool();
+		ForkJoinPool pool = new ForkJoinPool(10);
+		
+		//execute是异步调用的， invoke方法是同步调用的。
 		pool.execute(task);
 		
 		do {

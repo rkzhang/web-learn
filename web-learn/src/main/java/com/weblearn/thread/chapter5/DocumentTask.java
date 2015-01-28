@@ -31,6 +31,9 @@ public class DocumentTask extends RecursiveTask<Integer> {
 			int mid = (start + end) / 2;
 			DocumentTask task1 = new DocumentTask(document, start, mid, word);
 			DocumentTask task2 = new DocumentTask(document, mid, end, word);
+			
+			//这是个同步调用，这个任务将等待子任务完成，然后继续执行(也可能是结束).当一个主任吴等待它的子任务时，
+			//执行这个主任吴的工作者线程接收另一个等待执行的任务并开始执行
 			invokeAll(task1, task2);
 			
 			try {
