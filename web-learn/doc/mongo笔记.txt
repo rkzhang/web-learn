@@ -1,0 +1,88 @@
+内存参数修改，否则有警告
+echo never >>  /sys/kernel/mm/transparent_hugepage/enabled
+echo never >>  /sys/kernel/mm/transparent_hugepage/defrag
+
+./mongod --config ../mongodb.cfg
+
+./mongos --config ../mongodb.cfg
+
+
+查看服务器统计信息
+db.runCommand({"serverStatus":1})
+
+创建复制集
+登陆到复制集的一台机器中
+./mongo --port 27017
+
+rs.initiate({_id:'conf', members : [
+{_id : 0, host : '172.18.12.206:27020'},
+{_id : 1, host : '172.18.12.207:27020'},
+{_id : 2, host : '172.18.12.208:27020'}]
+})
+
+或者
+
+db.runCommand({
+"replSetInitiate" : {
+   "_id" : "replcopy",
+   "members" : [
+	{_id : 0, host : '192.168.10.147:27017'},
+	{_id : 1, host : '192.168.10.222:27017'},
+	{_id : 2, host : '192.168.10.244:27017'}
+]}})
+
+查看复制集信息
+rs.status()
+
+查看活跃节点
+db.isMaster()
+
+主从配置信息查看
+use local
+show collections
+db.system.replset.find()
+
+查询从库,分担主库的压力
+db.getMongo().setSlaveOk()
+
+通过oplog增加节点
+rs.add("192.168.10.223:27017")
+
+删除节点
+rs.remove("192.168.10.147:27017")
+rs.remove("192.168.10.222:27017")
+rs.remove("192.168.10.244:27017")
+
+通过mongod的参数--plogSize来改变oplog的日志大小
+
+
+######ip改变后的重新启动#######
+rs.reconfig({
+    "_id" : "replcopy",
+    "members" : [
+        {
+            "_id" : 0,
+            "host" : "192.168.1.147:27017"
+        },
+        {
+            "_id" : 1,
+            "host" : "192.168.1.222:27017"
+        },
+        {
+            "_id" : 2,
+            "host" : "192.168.1.244:27017"
+        }
+    ]
+}, {force: true}) 
+
+#############################################
+./mongo --port 30000
+
+创建分片
+use admin
+db.runCommand({addshard:"shard1/172.18.12.203:27017,172.18.12.204:27017,172.18.12.205:27017"});
+
+激活分片功能
+设置分片存储的数据库
+db.runCommand({enablesharding : "ims"});  
+db.runCommand({shardcollection : "ims.form_data", key : {_id : 1}});

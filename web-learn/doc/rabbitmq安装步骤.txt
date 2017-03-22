@@ -1,0 +1,99 @@
+1 安装erlang
+
+ 下载源码包   wget -c http://erlang.org/download/otp_src_18.3.tar.gz
+
+ 安装依赖包：
+  yum install ncurses-devel.x86_64
+  yum install openssl-devel.x86_64
+  yum install unixODBC-devel.x86_64
+  yum install wxGTK-devel.x86_64
+  yum install fop.x86_64
+
+
+ tar -zxf otp_src_18.3.tar.gz
+ cd  otp_src_18.3 
+
+ export ERL_TOP=`pwd`
+ export LANG=C
+
+ ./configure --prefix=/usr/local/erlang
+ 
+ make
+
+ make install
+
+
+ export PATH=$PATH:/usr/local/erlang/bin
+
+
+2 安装rabbitmq
+
+下载二进制包：  wget -c http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.1/rabbitmq-server-generic-unix-3.6.1.tar.xz
+
+tar -Jxf  rabbitmq-server-generic-unix-3.6.1.tar.xz
+
+mv rabbitmq_server-3.6.1 /usr/local/ 
+
+export PATH=$PATH:/usr/local/rabbitmq_server-3.6.1/sbin
+
+
+启动: rabbitmq-server -detached
+
+停止: rabbitmqctl stop
+
+
+-----------------------------------------------------------------------------------
+启用控制台
+./rabbitmq-plugins enable rabbitmq_management
+
+172.18.12.206:55672/mgmt/
+
+------ vhost管理 -------
+新增
+./rabbitmqctl add_vhost smplatform
+
+删除
+./rabbitmqctl delete_vhost smplatform
+
+显示
+./rabbitmqctl list_vhosts
+
+------ 用户帐号 ------
+新增用户
+./rabbitmqctl add_user doc 123456
+
+删除用户
+./rabbitmqctl delete_user doc
+
+查看用户
+./rabbitmqctl list_users
+
+更改密码
+./rabbitmqctl change_password doc 12345678
+
+------ 权限管理 -------
+赋权限
+./rabbitmqctl set_permissions -p smplatform doc ".*" ".*" ".*"
+
+".*" ".*" ".*" 对应  配置  写  读
+例如 "checks-.*" 只匹配以checks-开头的队列和交换器
+
+查看权限
+./rabbitmqctl list_permissions -p smplatform
+
+------ 队列管理 -------
+查看队列
+./rabbitmqctl list_queues
+
+./rabbitmqctl list_queues -p smplatform
+
+./rabbitmqctl list_queues -p smplatform name messages consumers memory
+
+查看交换器和绑定
+./rabbitmqctl list_exchanges
+
+./rabbitmqctl list_exchanges name type durable auto_delete
+
+
+
+
