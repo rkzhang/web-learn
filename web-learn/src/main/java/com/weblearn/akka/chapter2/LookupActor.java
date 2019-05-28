@@ -66,7 +66,13 @@ public class LookupActor extends UntypedActor {
 			}
 		}, system.dispatcher());
 		
-		
+		while(!fu.isCompleted()) {
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 		fu.value().get().get().tell("target message", ActorRef.noSender());
 	}
 

@@ -4,10 +4,6 @@ import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 import akka.japi.Creator;
-import akka.pattern.Patterns;
-import akka.util.Timeout;
-import scala.concurrent.Future;
-import scala.concurrent.duration.Duration;
 
 public class PropsDemoActor extends UntypedActor {
 
