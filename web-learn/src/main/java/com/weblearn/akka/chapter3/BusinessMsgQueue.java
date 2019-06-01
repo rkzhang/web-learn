@@ -13,7 +13,7 @@ import akka.dispatch.MessageQueue;
  */
 public class BusinessMsgQueue implements MessageQueue {
 	
-	private Queue<Envelope> queue = new ConcurrentLinkedQueue<>();
+	private static Queue<Envelope> queue = new ConcurrentLinkedQueue<>();
 
 	@Override
 	public void cleanUp(ActorRef owner, MessageQueue deadLetters) {

@@ -10,12 +10,21 @@ import akka.util.Timeout;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
 
-public class AskActorDemo extends UntypedActor {
+public class AskActorDemo extends UntypedActor { 
+	
+	private volatile int num = 10;
 
 	@Override
 	public void onReceive(Object msg) throws Exception {
-		System.out.println("发送者是 : " + getSender());
-		getSender().tell("hello " + msg, getSelf());
+		//Thread.sleep((int)(Math.random() * 500));
+		if(num > 0) {
+			num--;
+		}
+		System.out.println("****************");
+		System.out.println("s 接受者是 : " + getSelf());
+		System.out.println("s 发送msg : " + msg);
+		getSender().tell("num : " + num + "  " + msg, getSelf());
+		System.out.println("****************");
 	}
 
 	public static void main(String[] args) {
