@@ -42,6 +42,8 @@ public class GroupSample {
 		List<Dish> menu = Arrays.asList(new Dish(Dish.DishType.FISH, 100, true), new Dish(Dish.DishType.FISH, 200, false), 
 				new Dish(Dish.DishType.MEAT, 200, true), new Dish(Dish.DishType.MEAT, 300, false), new Dish(Dish.DishType.OTHER, 500, true));
 		
+		//String as = paramMapList.stream().map(String::toLowerCase).sorted((a, b) -> a.compareTo(b)).collect(Collectors.joining(","));
+		
 		//多级分组
 		Map<Dish.DishType, Map<Dish.CaloricLevel, List<Dish>>> dishesByTypeCaloricLevel = 
 				menu.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.groupingBy((Dish dish) -> { 

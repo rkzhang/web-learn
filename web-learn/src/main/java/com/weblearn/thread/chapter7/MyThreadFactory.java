@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadFactory;
 
 public class MyThreadFactory implements ThreadFactory {
 
-	private int counter;
+	private volatile long counter;
 	
 	private String prefix;
 	
@@ -17,6 +17,7 @@ public class MyThreadFactory implements ThreadFactory {
 	public Thread newThread(Runnable r) {
 		MyThread myThread = new MyThread(r, prefix + "-" + counter);
 		counter++;
+		myThread.setStartDate();
 		return myThread;
 	}
 
